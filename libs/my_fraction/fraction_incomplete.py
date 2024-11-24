@@ -1,4 +1,4 @@
-class Fraction:
+class Fraction_incomplete:
     """Class representing a fraction and operations on it
 
     Author : V. Van den Schrieck
