@@ -13,37 +13,31 @@ def main():
     print(f"Addition: {f1} + {f2} = {result_add}")
 
     # Soustraction
-    result_sub = f1 - f2
-    print(f"Soustraction: {f1} - {f2} = {result_sub}")
+    print(f"Soustraction: {f1} - {f2} = {f1 - f2}")
 
     # Multiplication
-    result_mul = f1 * f2
-    print(f"Multiplication: {f1} * {f2} = {result_mul}")
+    print(f"Multiplication: {f1} * {f2} = {f1 * f2}")
 
     # Division
-    result_div = f1 / f2
-    print(f"Division: {f1} / {f2} = {result_div}")
+    print(f"Division: {f1} / {f2} = {f1 / f2}")
 
     # Puissance
-    result_pow = f1 ** 2
-    print(f"Puissance: {f1}^2 = {result_pow}")
+    my_pow = 2
+    print(f"Puissance: {f1}^{my_pow} = {f1 ** my_pow}")
 
-    # Représentation en nombre mixte
+    # Mixed number
     mixed = result_add.as_mixed_number()
     print(f"Nombre mixte de {result_add}: {mixed}")
 
-    # Comparaison
-    are_equal = f1 == f2
-    print(f"{f1} == {f2}: {are_equal}")
+    # Egalité
+    print(f"{f1} == {f2}: {f1 == f2}")
 
-    # Décimal
-    decimal_value = float(f1)
-    print(f"Valeur décimale de {f1}: {decimal_value}")
+    # Float
+    print(f"Valeur décimale de {f1}: {float(f1)}")
 
     # Valeur absolue
     f3 = Fraction(-3, 4)
-    abs_value = abs(f3)
-    print(f"Valeur absolue de {f3}: {abs_value}")
+    print(f"Valeur absolue de {f3}: {abs(f3)}")
 
     # Vérifications des propriétés
     print(f"{f1} est-il un entier ? {f1.is_integer()}")
