@@ -1,10 +1,10 @@
 import unittest
-from libs.my_fraction import Fraction
+from my_fraction import Fraction
 
 
 class FractionTestCase(unittest.TestCase):
     def test_fraction_init(self):
-        self.assertRaises(ValueError, Fraction, 1, 0)
+        self.assertRaises(ZeroDivisionError, Fraction, 1, 0)
         self.assertEqual(Fraction(3, 6).__str__(), "1/2", "Fraction(3, 6)")
         self.assertEqual(Fraction(-1, -1).__str__(), "1", "Fraction(-1, -1)")
         self.assertEqual(Fraction(2, -9).__str__(), "-2/9", "Fraction(2, -9)")
@@ -18,28 +18,22 @@ class FractionTestCase(unittest.TestCase):
         self.assertEqual(Fraction(1, 3).as_mixed_number(), "1/3", "Fraction(1, 3).as_mixed_number()")
 
     def test_fraction_add(self):
-        self.assertRaises(TypeError, Fraction(1, 8).__add__, "hello")
         self.assertEqual(Fraction(1, 2) + Fraction(5, 8), Fraction(9, 8), "Fraction(1, 2) + Fraction(5, 8)")
 
     def test_fraction_sub(self):
-        self.assertRaises(TypeError, Fraction(1, 8).__sub__, "hello")
         self.assertEqual(Fraction(1, 2) - Fraction(5, 8), Fraction(-1, 8), "Fraction(1, 2) - Fraction(5, 8)")
 
     def test_fraction_mul(self):
-        self.assertRaises(TypeError, Fraction(1, 8).__mul__, "hello")
         self.assertEqual(Fraction(1, 2) * Fraction(5, 8), Fraction(5, 16), "Fraction(1, 2) * Fraction(5, 8)")
 
     def test_fraction_truediv(self):
-        self.assertRaises(TypeError, Fraction(1, 8).__truediv__, "hello")
         self.assertRaises(ZeroDivisionError, Fraction(1, 2).__truediv__, Fraction(0, 5))
         self.assertEqual(Fraction(1, 2) / Fraction(5, 8), Fraction(4, 5), "Fraction(1, 2) / Fraction(5, 8)")
 
     def test_fraction_pow(self):
-        self.assertRaises(TypeError, Fraction(1, 8).__pow__, "hello")
         self.assertEqual(Fraction(1, 2) ** 7, Fraction(1, 128), "Fraction(1, 2) ** 7")
 
     def test_fraction_eq(self):
-        self.assertRaises(TypeError, Fraction(1, 8).__eq__, "hello")
         self.assertEqual(Fraction(1, 2), Fraction(3, 6), "Fraction(1, 2) == Fraction(3, 6)")
 
     def test_fraction_float(self):
@@ -61,7 +55,6 @@ class FractionTestCase(unittest.TestCase):
         self.assertTrue(Fraction(1, 3).is_unit(), "Fraction(1, 3) is unit")
 
     def test_fraction_is_adjacent_to(self):
-        self.assertRaises(TypeError, Fraction(1, 3).is_adjacent_to, "hello")
         self.assertTrue(Fraction(1, 3).is_adjacent_to(Fraction(1, 4)), "Fraction(1, 3) is adjacent to Fraction(1, 4)")
 
 

@@ -12,12 +12,12 @@ class Fraction:
     def __init__(self, num=0, den=1):
         """This builds a fraction based on some numerator and denominator.
 
-        PRE: den != 0 (denominator must not be zero).
+        PRE: num and den must be integers.
         POST: The fraction is stored in its reduced form (simplified).
-        RAISE: ValueError if den == 0.
+        RAISE: ZeroDivisionError if den == 0.
         """
         if den == 0:
-            raise ValueError("Denominator cannot be zero.")
+            raise ZeroDivisionError("Denominator cannot be zero.")
         common_divisor = gcd(num, den)
         self.num = num // common_divisor
         self.den = den // common_divisor
@@ -64,10 +64,7 @@ class Fraction:
 
         PRE: other is a Fraction.
         POST: Returns a new Fraction representing the sum of self and other, in reduced form.
-        RAISE: TypeError if other is not a Fraction.
         """
-        if not isinstance(other, Fraction):
-            raise TypeError("Operands must be fractions.")
         new_num = self.num * other.den + other.num * self.den
         new_den = self.den * other.den
         return Fraction(new_num, new_den)
@@ -77,10 +74,7 @@ class Fraction:
 
         PRE: other is a Fraction.
         POST: Returns a new Fraction representing the difference between self and other, in reduced form.
-        RAISE: TypeError if other is not a Fraction.
         """
-        if not isinstance(other, Fraction):
-            raise TypeError("Operands must be fractions.")
         new_num = self.num * other.den - other.num * self.den
         new_den = self.den * other.den
         return Fraction(new_num, new_den)
@@ -90,10 +84,7 @@ class Fraction:
 
         PRE: other is a Fraction.
         POST: Returns a new Fraction representing the product of self and other, in reduced form.
-        RAISE: TypeError if other is not a Fraction.
         """
-        if not isinstance(other, Fraction):
-            raise TypeError("Operands must be fractions.")
         return Fraction(self.num * other.num, self.den * other.den)
 
     def __truediv__(self, other):
@@ -101,11 +92,8 @@ class Fraction:
 
         PRE: other is a Fraction and other != 0.
         POST: Returns a new Fraction representing the division of self by other, in reduced form.
-        RAISE: TypeError if other is not a Fraction.
-               ZeroDivisionError if other equals 0.
+        RAISE: ZeroDivisionError if other equals 0.
         """
-        if not isinstance(other, Fraction):
-            raise TypeError("Operands must be fractions.")
         if other.num == 0:
             raise ZeroDivisionError("Cannot divide by zero.")
         return Fraction(self.num * other.den, self.den * other.num)
@@ -115,10 +103,7 @@ class Fraction:
 
         PRE: power is an integer.
         POST: Returns a new Fraction raised to the specified power, in reduced form.
-        RAISE: TypeError if power is not an integer.
         """
-        if not isinstance(power, int):
-            raise TypeError("Power must be an integer.")
         return Fraction(self.num ** power, self.den ** power)
 
     def __eq__(self, other):
@@ -126,10 +111,7 @@ class Fraction:
 
         PRE: other is a Fraction.
         POST: Returns True if self and other are equivalent fractions, False otherwise.
-        RAISE: TypeError if other is not a Fraction.
         """
-        if not isinstance(other, Fraction):
-            raise TypeError("Operands must be fractions.")
         return self.num == other.num and self.den == other.den
 
     def __float__(self):
@@ -190,10 +172,7 @@ class Fraction:
 
         PRE: other is a Fraction.
         POST: Returns True if the fractions are adjacent, False otherwise.
-        RAISE: TypeError if other is not a Fraction.
-        """
-        if not isinstance(other, Fraction):
-            raise TypeError("Operands must be fractions.")
+        """ 
         return  abs(self - other).is_unit()
 
 
